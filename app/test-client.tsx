@@ -11,6 +11,9 @@ type SubmitResponse = {
   error?: string;
 };
 
+const chnuLogoUrl =
+  "https://media.chnu.edu.ua/media/je1kun2v/symvolika-5.png?format=webp&hmac=adc9dae7544e7dcf4c893ef2e5d4afc823e0b7160c6d734dc52c4294b2af1d3a&quality=80&v=1d93f94bbde7b90";
+
 export default function TestClient({ questions }: { questions: Question[] }) {
   const [studentName, setStudentName] = useState("");
   const [group, setGroup] = useState("");
@@ -72,7 +75,9 @@ export default function TestClient({ questions }: { questions: Question[] }) {
     const currentAnswers = answersRef.current;
     const unanswered = currentAnswers.filter((answer) => answer < 0).length;
     if (!fromTimer && unanswered > 0) {
-      const ok = window.confirm(`Не надано відповідей: ${unanswered}. Завершити тест зараз?`);
+      const ok = window.confirm(
+        `Не надано відповідей: ${unanswered}. Завершити тест зараз?`
+      );
       if (!ok) return;
     }
 
@@ -110,7 +115,9 @@ export default function TestClient({ questions }: { questions: Question[] }) {
         <section className="result">
           <p className="eyebrow">Результат збережено</p>
           <h1>Тест завершено</h1>
-          <div className="score">{result.score}/{result.total} ({result.percent}%)</div>
+          <div className="score">
+            {result.score}/{result.total} ({result.percent}%)
+          </div>
           <p>
             Таблиця доступна за посиланням <a href="/results">/results</a>.
           </p>
@@ -126,7 +133,9 @@ export default function TestClient({ questions }: { questions: Question[] }) {
               </tr>
               <tr>
                 <th>Бали</th>
-                <td>{result.score}/{result.total} ({result.percent}%)</td>
+                <td>
+                  {result.score}/{result.total} ({result.percent}%)
+                </td>
               </tr>
             </tbody>
           </table>
@@ -139,7 +148,15 @@ export default function TestClient({ questions }: { questions: Question[] }) {
     return (
       <main className="app-shell">
         <section className="intro">
-          <div>
+          <div className="intro__content">
+            <div className="university-brand">
+              <img
+                src={chnuLogoUrl}
+                alt="Логотип Чернівецького національного університету імені Юрія Федьковича"
+                className="university-brand__logo"
+              />
+            </div>
+
             <p className="eyebrow">Підсумковий модульний контроль</p>
             <h1>Лінгвокраїнознавство Великої Британії та США</h1>
             <p className="intro__meta">Час виконання: 60 хвилин</p>
@@ -179,7 +196,9 @@ export default function TestClient({ questions }: { questions: Question[] }) {
         <header className="testbar">
           <div>
             <p className="eyebrow">Тест триває</p>
-            <h2>{studentName} · {group}</h2>
+            <h2>
+              {studentName} · {group}
+            </h2>
           </div>
           <div className={`timer ${secondsLeft <= 300 ? "is-low" : ""}`} aria-live="polite">
             <span>Залишилось</span>
@@ -196,7 +215,9 @@ export default function TestClient({ questions }: { questions: Question[] }) {
           <div className="questions">
             {questions.map((question, questionIndex) => (
               <fieldset className="question" key={question.text}>
-                <legend>{questionIndex + 1}. {question.text}</legend>
+                <legend>
+                  {questionIndex + 1}. {question.text}
+                </legend>
                 <div className="options">
                   {question.options.map((option, answerIndex) => (
                     <label className="option" key={option}>
@@ -215,7 +236,9 @@ export default function TestClient({ questions }: { questions: Question[] }) {
           </div>
 
           <div className="submit-row">
-            <p>Відповіді: {answeredCount}/{questions.length}</p>
+            <p>
+              Відповіді: {answeredCount}/{questions.length}
+            </p>
             <button type="submit" disabled={submitting}>
               {submitting ? "Збереження..." : "Завершити та зберегти"}
             </button>
