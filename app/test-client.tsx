@@ -118,9 +118,7 @@ export default function TestClient({ questions }: { questions: Question[] }) {
           <div className="score">
             {result.score}/{result.total} ({result.percent}%)
           </div>
-          <p>
-            Таблиця доступна за посиланням <a href="/results">/results</a>.
-          </p>
+          <p className="result__notice">Дякуємо. Ваш результат успішно збережено.</p>
           <table className="meta-table">
             <tbody>
               <tr>
@@ -155,6 +153,9 @@ export default function TestClient({ questions }: { questions: Question[] }) {
                 alt="Логотип Чернівецького національного університету імені Юрія Федьковича"
                 className="university-brand__logo"
               />
+              <p className="university-brand__department">
+                Кафедра лінгвістики та перекладу
+              </p>
             </div>
 
             <p className="eyebrow">Підсумковий модульний контроль</p>

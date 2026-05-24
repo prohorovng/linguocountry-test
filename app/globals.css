@@ -71,8 +71,9 @@ input {
 }
 
 .university-brand {
-  display: flex;
-  align-items: center;
+  display: grid;
+  align-items: start;
+  gap: 10px;
   width: min(100%, 520px);
   margin-bottom: 34px;
   padding-bottom: 18px;
@@ -84,6 +85,16 @@ input {
   width: min(100%, 410px);
   height: auto;
   object-fit: contain;
+}
+
+.university-brand__department {
+  max-width: 410px;
+  margin: 0;
+  color: var(--brand-red);
+  font-size: clamp(1rem, 1.45vw, 1.22rem);
+  font-weight: 800;
+  line-height: 1.25;
+  text-transform: uppercase;
 }
 
 .eyebrow {
@@ -291,6 +302,16 @@ button:disabled {
   padding: 32px;
 }
 
+.result h1 {
+  font-size: clamp(2.35rem, 6vw, 4.4rem);
+}
+
+.result__notice {
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
 .score {
   margin: 18px 0 12px;
   font-size: 2rem;
@@ -377,21 +398,32 @@ button:disabled {
 
 @media (max-width: 780px) {
   .app-shell {
-    width: min(100% - 20px, 1120px);
-    padding: 10px 0 32px;
+    width: min(100% - 16px, 1120px);
+    padding: 8px 0 28px;
   }
 
   .intro {
+    gap: 22px;
     min-height: auto;
-    padding: 22px;
+    padding: 18px;
   }
 
   .university-brand {
-    margin-bottom: 24px;
+    width: 100%;
+    margin-bottom: 22px;
+    padding-bottom: 14px;
+  }
+
+  .university-brand__logo {
+    width: min(100%, 340px);
+  }
+
+  .university-brand__department {
+    font-size: 0.94rem;
   }
 
   .student-form {
-    padding: 18px;
+    padding: 16px;
   }
 
   .test {
@@ -419,5 +451,48 @@ button:disabled {
 
   .question {
     padding: 16px;
+  }
+
+  .result {
+    padding: 22px 18px;
+  }
+
+  .result h1 {
+    font-size: clamp(2.15rem, 12vw, 3.15rem);
+  }
+
+  .score {
+    font-size: 1.55rem;
+  }
+
+  .meta-table,
+  .meta-table tbody,
+  .meta-table tr,
+  .meta-table th,
+  .meta-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .meta-table tr {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .meta-table tr:last-child {
+    border-bottom: 0;
+  }
+
+  .meta-table th,
+  .meta-table td {
+    border-bottom: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .meta-table th {
+    padding-bottom: 4px;
+  }
+
+  .meta-table td {
+    padding-top: 4px;
   }
 }
