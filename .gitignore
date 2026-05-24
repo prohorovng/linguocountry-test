@@ -1,0 +1,10 @@
+.env
+.env.local
+.env*.local
+.next
+node_modules
+server.log
+server.out.log
+server.err.log
+data/results.jsonl
+data/results.csv
